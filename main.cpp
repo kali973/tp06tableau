@@ -18,6 +18,8 @@ int chercher(int pInt[100], int count, int valeur);
 
 void swap(int pInt[100], int indSwap01, int indSwap02);
 
+void suppression(int pInt[100], int valeur, int count);
+
 void PrintTab(int tab[], int card) {
     int k = 0;
 
@@ -34,7 +36,7 @@ void PrintTab(int tab[], int card) {
 
 int main(int argc, char *argv[]) {
     int tab[TAB_MAX] = {23, 17, 64, 41, 5, 17, 80};
-    int indice, count = 7, indiceSwap01, indiceSwap02;
+    int indice, count = 7;
     int valeur, indSwap01, inSwap02;
     char rep[100];
 
@@ -63,7 +65,6 @@ int main(int argc, char *argv[]) {
                 scanf("%d", &indSwap01);
                 printf("\nDeuxième indice = ");
                 scanf("%d", &inSwap02);
-
                 swap(tab, indSwap01, inSwap02);
                 PrintTab(tab, count);
                 break;
@@ -72,21 +73,22 @@ int main(int argc, char *argv[]) {
             case 'C':
                 printf("\nEntrez la valeur cherchee = ");
                 scanf("%d", &valeur);
-
                 indice = chercher(tab, count, valeur);
-
                 if (indice < 0) printf("Valeur non trouvee ! \n");
                 else printf("Indice = %d , valeur = %d \n", indice, tab[indice]);
-
                 break;
 
             case 's':
             case 'S':
                 printf("\nEntrez la valeur a supprimer = ");
                 scanf("%d", &valeur);
-
-                /* ....... */
-
+                PrintTab(tab, count);
+                indice = chercher(tab, count, valeur);
+                if (indice != -1) {
+                    suppression(tab, indice, count);
+                } else {
+                    printf("\nLa valeur saisie ne figure pas dans le tableau : %d\n", valeur);
+                }
                 break;
 
             case 'i':
@@ -104,6 +106,19 @@ int main(int argc, char *argv[]) {
     }
 }
 
+void suppression(int *str_input, int valeur, int count) {
+
+    str_input[valeur] = NULL;
+
+    for (unsigned ind = valeur; ind < count; ++ind) {
+        int *p1 = &str_input[ind + 1];
+        int temp = *p1;
+        str_input[ind] = temp;
+    }
+    count--;
+    PrintTab(str_input, count);
+}
+
 void swap(int *str_input, int indSwap01, int indSwap02) {
 
     int *p1 = &str_input[indSwap01];
@@ -116,9 +131,10 @@ void swap(int *str_input, int indSwap01, int indSwap02) {
 }
 
 int chercher(int *str_input, int count, int valeur) {
-    for (unsigned ind = 0; ind < count; ++ind)
+    for (unsigned ind = 0; ind < count; ++ind) {
         if (str_input[ind] == valeur) {
             return ind;
         }
+    }
     return -1;
 }
