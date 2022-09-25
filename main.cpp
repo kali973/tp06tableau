@@ -83,13 +83,13 @@ int main(int argc, char *argv[]) {
                 printf("\nEntrez la valeur a supprimer = ");
                 scanf("%d", &valeur);
                 PrintTab(tab, count);
-                indice = chercher(tab, count, valeur);
-                if (indice != -1) {
-                    suppression(tab, indice, count);
-                    count--;
-                    PrintTab(tab, count);
-                } else {
-                    printf("\nLa valeur saisie ne figure pas dans le tableau : %d\n", valeur);
+                for (unsigned ind = 0; ind < count; ++ind) {
+                    indice = chercher(tab, count, valeur);
+                    if (indice != -1) {
+                        suppression(tab, indice, count);
+                        count--;
+                        PrintTab(tab, count);
+                    }
                 }
                 break;
 
@@ -114,6 +114,7 @@ void suppression(int *str_input, int valeur, int count) {
         int *p1 = &str_input[ind + 1];
         int temp = *p1;
         str_input[ind] = temp;
+
     }
 }
 
