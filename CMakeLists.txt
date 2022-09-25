@@ -3,4 +3,4 @@ project(tp06tableau)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(tp06tableau main.cpp)
+add_executable(tp06tableau main.cpp function.cpp function.h)
