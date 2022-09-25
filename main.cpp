@@ -86,6 +86,8 @@ int main(int argc, char *argv[]) {
                 indice = chercher(tab, count, valeur);
                 if (indice != -1) {
                     suppression(tab, indice, count);
+                    count--;
+                    PrintTab(tab, count);
                 } else {
                     printf("\nLa valeur saisie ne figure pas dans le tableau : %d\n", valeur);
                 }
@@ -107,16 +109,12 @@ int main(int argc, char *argv[]) {
 }
 
 void suppression(int *str_input, int valeur, int count) {
-
     str_input[valeur] = NULL;
-
     for (unsigned ind = valeur; ind < count; ++ind) {
         int *p1 = &str_input[ind + 1];
         int temp = *p1;
         str_input[ind] = temp;
     }
-    count--;
-    PrintTab(str_input, count);
 }
 
 void swap(int *str_input, int indSwap01, int indSwap02) {
