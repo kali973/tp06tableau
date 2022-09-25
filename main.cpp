@@ -20,6 +20,8 @@ void swap(int pInt[100], int indSwap01, int indSwap02);
 
 void suppression(int pInt[100], int valeur, int count);
 
+void insertion(int pInt[100], int valeur, int count);
+
 void PrintTab(int tab[], int card) {
     int k = 0;
 
@@ -44,7 +46,7 @@ int main(int argc, char *argv[]) {
 
     while (TRUE) {
 
-        printf("\nIndiquez l'operation a effectuer [Quit/Aff/Cher/Sup/Ins/Ech]: \n");
+        printf("\nIndiquez l'operation a effectuer [Quit/Aff/Cher/Sup/Ins/Ech]: ");
         scanf("%s", rep);
 
         switch (rep[0]) {
@@ -95,17 +97,32 @@ int main(int argc, char *argv[]) {
 
             case 'i':
             case 'I':
-                printf("\nEntrez la valeur a inserer et la position correspondante = ");
-                scanf("%d %d", &valeur, &indice);
+                printf("\nEntrez la valeur a inserer = ");
+                scanf("%d", &valeur);
 
-                /* ....... */
-
+                if (count == 7) {
+                    printf("\nInsertion impossible => tableau plein\n");
+                } else {
+                    indice = chercher(tab, count, valeur);
+                    if (indice == -1) {
+                        insertion(tab, valeur, count);
+                        count++;
+                        PrintTab(tab, count);
+                    }
+                }
                 break;
 
             default:
                 printf("Choix incorrect !\n");
         }
     }
+}
+
+void insertion(int *str_input, int valeur, int count) {
+    int *p1 = &str_input[count];
+    *p1  = valeur;
+    int temp = *p1;
+    str_input[count] = temp;
 }
 
 void suppression(int *str_input, int valeur, int count) {
