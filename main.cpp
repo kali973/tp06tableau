@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
                     indice = chercher(tab, count, valeur);
                     if (indice != -1) {
                         suppression(tab, indice, count);
-                        count--;
+                        count--; //todo   count-- dans la fonction
                         PrintTab(tab, count);
                     }
                 }

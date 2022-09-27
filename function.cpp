@@ -5,6 +5,7 @@
 #include <clocale>
 #include "function.h"
 
+//Todo utiliser TAB_MAX
 void insertion(int *str_input, int valeur, int count) {
     int *p1 = &str_input[count];
     *p1 = valeur;
@@ -12,9 +13,9 @@ void insertion(int *str_input, int valeur, int count) {
     str_input[count] = temp;
 }
 
-void suppression(int *str_input, int valeur, int count) {
-    str_input[valeur] = NULL;
-    for (unsigned ind = valeur; ind < count; ++ind) {
+void suppression(int *str_input, int indice, int count) {
+    str_input[indice] = 0;
+    for (unsigned ind = indice; ind < count; ++ind) {
         int *p1 = &str_input[ind + 1];
         int temp = *p1;
         str_input[ind] = temp;
