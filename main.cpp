@@ -64,9 +64,11 @@ int main(int argc, char *argv[]) {
                 } else {
                     printf("\nDeuxième indice = ");
                     scanf("%d", &indSwap02);
+
                     if (indSwap02 > count) {
                         printf("\nIndice supérieur au nombre de cellule du tableau \n");
                     } else {
+                        // swap two value of array
                         swap(tab, indSwap01, indSwap02);
                         PrintTab(tab, count);
                     }
@@ -77,7 +79,10 @@ int main(int argc, char *argv[]) {
             case 'C':
                 printf("\nEntrez la valeur cherchee = ");
                 scanf("%d", &valeur);
+
+                // find indice of value
                 indice = chercher(tab, count, valeur);
+
                 if (indice < 0) printf("Valeur non trouvee ! \n");
                 else printf("Indice = %d , valeur = %d \n", indice, tab[indice]);
                 break;
@@ -85,13 +90,15 @@ int main(int argc, char *argv[]) {
             case 's':
             case 'S':
                 printf("\nEntrez la valeur a supprimer = ");
+
                 scanf("%d", &valeur);
                 PrintTab(tab, count);
+
                 for (unsigned ind = 0; ind < count; ++ind) {
                     indice = chercher(tab, count, valeur);
                     if (indice != -1) {
                         suppression(tab, indice, count);
-                        count--; //todo   count-- dans la fonction
+                        count--;
                         PrintTab(tab, count);
                     }
                 }
