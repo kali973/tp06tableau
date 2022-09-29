@@ -1,4 +1,6 @@
-6. Manipulation des éléments d'un tableau
+Gilles COUTARD 
+
+Manipulation des éléments d'un tableau
 
 Compléter le fichier tab1.c en y ajoutant les fonctions suivantes :
 
