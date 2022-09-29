@@ -13,14 +13,14 @@ void insertion(int *str_input, int valeur, int count) {
     str_input[count] = temp;
 }
 
-void suppression(int *str_input, int indice, int count) {
+int suppression(int *str_input, int indice, int count) {
     str_input[indice] = 0;
     for (unsigned ind = indice; ind < count; ++ind) {
         int *p1 = &str_input[ind + 1];
         int temp = *p1;
         str_input[ind] = temp;
-
     }
+    count--;
 }
 
 void swap(int *str_input, int indSwap01, int indSwap02) {
